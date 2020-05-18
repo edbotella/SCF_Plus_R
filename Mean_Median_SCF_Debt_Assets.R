@@ -19,6 +19,10 @@ scf_plus_no_null_weights<-scf_plus[!is.na(scf_plus$wgtI95W95),]
 #set year as factor to allow us to group by the year
 scf_plus_no_null_weights$yearmerge<-as.factor(scf_plus_no_null_weights$yearmerge)
 
+#turn into a survey
+scf_survey <- scf_plus_no_null_weights %>%
+as_survey(weights = c(wgtI95W95))
+
 #Change working directory to desired folder output with another setwd()
 
 #create a file with means of key varaibles
